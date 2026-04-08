@@ -2,9 +2,7 @@
 
 Public Class Form1
 
-    ' =========================
-    ' VALIDASI INPUT
-    ' =========================
+
     Private Sub txtNama_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNama.KeyPress
         If Not Char.IsLetter(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
             e.Handled = True
@@ -23,9 +21,6 @@ Public Class Form1
         End If
     End Sub
 
-    ' =========================
-    ' UPLOAD FOTO
-    ' =========================
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         OpenFileDialogFoto.Filter = "Image Files|*.jpg;*.jpeg;*.png"
         If OpenFileDialogFoto.ShowDialog() = DialogResult.OK Then
@@ -34,9 +29,6 @@ Public Class Form1
         End If
     End Sub
 
-    ' =========================
-    ' MENU
-    ' =========================
     Private Sub InputDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InputDataToolStripMenuItem.Click
         TabControl1.SelectedIndex = 0
     End Sub
@@ -55,9 +47,7 @@ Public Class Form1
         End If
     End Sub
 
-    ' =========================
-    ' TOMBOL SIMPAN & CETAK
-    ' =========================
+
     Private Sub btnSimpanCetak_Click(sender As Object, e As EventArgs) Handles btnSimpanCetak.Click
 
         ' VALIDASI
@@ -97,9 +87,7 @@ Public Class Form1
 
     End Sub
 
-    ' =========================
-    ' TAMPILKAN KARTU
-    ' =========================
+
     Private Sub TampilkanKartu()
         Dim f As New Form2()
 
@@ -116,9 +104,7 @@ Public Class Form1
         f.Show()
     End Sub
 
-    ' =========================
-    ' AMBIL HOBI
-    ' =========================
+
     Private Function GetHobi() As String
         Dim hobi As String = ""
         Dim daftar = {chk1, chk2, chk3, chk4, chk5, chk6, chk7, chk8}
@@ -132,9 +118,7 @@ Public Class Form1
         Return hobi.TrimEnd(", ".ToCharArray())
     End Function
 
-    ' =========================
-    ' SIMPAN FILE
-    ' =========================
+
     Private Sub SimpanDataKeFile()
         SaveFileDialog1.Filter = "Text File|*.txt"
 
