@@ -5,7 +5,7 @@ Public Class Form2
 
     Dim conn As MySqlConnection
 
-    ' ================= KONEKSI =================
+   
     Sub Koneksi()
         conn = New MySqlConnection("server=localhost;user id=root;password=;database=dbpulsa")
         If conn.State = ConnectionState.Closed Then
@@ -13,7 +13,7 @@ Public Class Form2
         End If
     End Sub
 
-    ' ================= ISI COMBOBOX =================
+    
     Sub LoadProduk()
         CmbProduk.Items.Clear()
         CmbProduk.Items.Add("Pulsa")
@@ -21,7 +21,7 @@ Public Class Form2
         CmbProduk.Items.Add("Nelpon")
     End Sub
 
-    ' ================= LOAD DATA =================
+
     Sub LoadTransaksi()
         Koneksi()
         Dim da As New MySqlDataAdapter("SELECT * FROM transaksi", conn)
@@ -30,13 +30,13 @@ Public Class Form2
         dgvTransaksi.DataSource = dt
     End Sub
 
-    ' ================= FORM LOAD =================
+   
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadProduk()
         LoadTransaksi()
     End Sub
 
-    ' ================= PILIH PRODUK =================
+ 
     Private Sub CmbProduk_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbProduk.SelectedIndexChanged
 
         If CmbProduk.Text = "Pulsa" Then
@@ -49,7 +49,7 @@ Public Class Form2
 
     End Sub
 
-    ' ================= HITUNG TOTAL =================
+   
     Private Sub BtnHitung_Click(sender As Object, e As EventArgs) Handles BtnHitung.Click
         Dim harga As Double = Val(TxtHarga.Text)
         Dim jumlah As Integer = Val(TxtJumlah.Text)
@@ -57,7 +57,7 @@ Public Class Form2
         TxtTotal.Text = (harga * jumlah).ToString()
     End Sub
 
-    ' ================= SIMPAN =================
+ 
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Koneksi()
 
@@ -81,7 +81,7 @@ Public Class Form2
         Bersih()
     End Sub
 
-    ' ================= RESET =================
+ 
     Sub Bersih()
         TxtKode.Clear()
         TxtNoHP.Clear()
@@ -91,7 +91,7 @@ Public Class Form2
         TxtTotal.Clear()
     End Sub
 
-    ' ================= BATAL (KEMBALI KE FORM1) =================
+
     Private Sub BtnBatal_Click(sender As Object, e As EventArgs) Handles BtnBatal.Click
         Form1.Show()
         Me.Close()
