@@ -8,7 +8,6 @@ Public Class Form1
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
 
-    ' ================= KONEKSI =================
     Sub Koneksi()
         conn = New MySqlConnection("server=localhost;user id=root;password=;database=dbpulsa")
         If conn.State = ConnectionState.Closed Then
@@ -16,7 +15,6 @@ Public Class Form1
         End If
     End Sub
 
-    ' ================= LOAD DATA =================
     Sub LoadData()
         Koneksi()
         da = New MySqlDataAdapter("SELECT * FROM produk", conn)
@@ -25,12 +23,12 @@ Public Class Form1
         dgvJenis.DataSource = dt
     End Sub
 
-    ' ================= FORM LOAD =================
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadData()
     End Sub
 
-    ' ================= SIMPAN =================
+
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Koneksi()
 
@@ -57,7 +55,7 @@ Public Class Form1
         Bersih()
     End Sub
 
-    ' ================= UBAH =================
+
     Private Sub BtnUbah_Click(sender As Object, e As EventArgs) Handles BtnUbah.Click
         Koneksi()
 
@@ -79,7 +77,7 @@ Public Class Form1
         Bersih()
     End Sub
 
-    ' ================= HAPUS =================
+   
     Private Sub BtnHapus_Click(sender As Object, e As EventArgs) Handles BtnHapus.Click
         Koneksi()
 
@@ -94,7 +92,7 @@ Public Class Form1
         Bersih()
     End Sub
 
-    ' ================= KLIK GRID =================
+   
     Private Sub dgvJenis_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvJenis.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvJenis.Rows(e.RowIndex)
@@ -109,7 +107,7 @@ Public Class Form1
         End If
     End Sub
 
-    ' ================= SEARCH =================
+   
     Private Sub TxtSearch_TextChanged(sender As Object, e As EventArgs) Handles TxtSearch.TextChanged
         Koneksi()
 
@@ -120,7 +118,7 @@ Public Class Form1
         dgvJenis.DataSource = dt
     End Sub
 
-    ' ================= RESET =================
+
     Sub Bersih()
         TxtKodeJenis.Clear()
         TxtNamaProduk.Clear()
@@ -133,7 +131,6 @@ Public Class Form1
         CmbStatus.Text = ""
     End Sub
 
-    ' ================= BATAL =================
     Private Sub BtnBatal_Click(sender As Object, e As EventArgs) Handles BtnBatal.Click
         Bersih()
     End Sub
